@@ -5,6 +5,28 @@ class Node:
         self.val = value
 
 
+def remove(root, key):
+    if root is None:
+        return root
+    if key < root.val:
+        root.left = remove(root.left, key)
+    elif key > root.val:
+        root.right = remove(root.right, key)
+    else:
+        if root.right is None:
+            temp = root.left
+            root = None
+            return temp
+        elif root.left is None:
+            temp = root.right
+            root = None
+            return temp
+        temp = root.left
+        temp.right = root.right
+        root = None
+        return temp
+
+
 def add(root, node):
     if root.val < node.val:
         if root.right is None:
@@ -54,8 +76,7 @@ def printMost(root):
 
 
 def printTree(node, space):
-    # Base case
-    if (node == None):
+    if node is None:
         return
     space += 5
     printTree(node.right, space)
@@ -76,5 +97,5 @@ if __name__ == "__main__":
             valid = True
         except ValueError:
             valid = False
-    find(r, Node(1))
+    remove(r, 3)
     printTree(r, 0)
