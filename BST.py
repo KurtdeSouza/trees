@@ -5,13 +5,13 @@ class Node:
         self.val = value
 
 
-def remove(root, key):
+def Remove(root, key):
     if root is None:
         return root
     if key < root.val:
-        root.left = remove(root.left, key)
+        root.left = Remove(root.left, key)
     elif key > root.val:
-        root.right = remove(root.right, key)
+        root.right = Remove(root.right, key)
     else:
         if root.right is None:
             temp = root.left
@@ -97,5 +97,5 @@ if __name__ == "__main__":
             valid = True
         except ValueError:
             valid = False
-    remove(r, 3)
+    Remove(r, 3)
     printTree(r, 0)
