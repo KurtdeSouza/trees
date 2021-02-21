@@ -28,13 +28,13 @@ class Node:
                 return self
             else:
                 if self.left:
-                    return self.left  # promote the left subtree
+                    return self.left
                 else:
-                    return self.right  # promote the right subtree
+                    return self.right
         else:
-            if self.val > key:  # key should be in the left subtree
+            if self.val > key:
                 self.left = self.left.remove(key)
-            else:  # key should be in the right subtree
+            else:
                 self.right = self.right.remove(key)
         return self
 
