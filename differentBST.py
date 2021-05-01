@@ -24,6 +24,7 @@ class Node:
             if self.right and self.left:
                 temp = self.right
                 self = self.left
+                del self.left
                 self.right = temp
                 return self
             else:
@@ -53,10 +54,13 @@ class Node:
 
 if __name__ == "__main__":
     root = Node(5)
+    root.insert(3)
+    root.insert(4)
+    root.insert(2)
+    root.insert(7)
     root.insert(8)
-    root.insert(10)
-    root.insert(9)
-    root.insert(11)
+    root.insert(6)
     root.PrintTree(0)
+    print('\n')
     root.remove(8)
     root.PrintTree(0)
